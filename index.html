@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: rgb(84, 116, 95);
+    }
+    * {
+  box-sizing: border-box;
+} 
+@media only screen and (max-width: 500px) 
+{
+  .navbar_right{
+    margin-right: 3%;
+    width: 100%;
+    background-color:  rgba(91, 94, 126, 0.918);
+    text-decoration: none;
+  }
+  .navbar_head{
+    width: 100%;
+    text-decoration: none;
+    padding-bottom: 2px;
+    
+  }
+  .div_box
+  {
+        font-size:20px !important;
+        background-color: rgba(203, 193, 193, 0.918) !important;
+        width: 100% !important;
+        margin-right: 5%;
+        margin-left: 5%;
+  }
+   
+}
+    .div_box
+    {
+        background: rgba(203, 193, 193, 0.918);
+        font-size: 25px;
+        margin: auto;
+        width: 80%;
+    }
+
+    h1 {
+      display: block;
+      float: left;
+    }
+    #navbar 
+    {
+      overflow: hidden;
+      background-color: rgba(91, 94, 126, 0.918);
+      width: auto;
+      
+    }
+
+    #navbar a 
+    {
+      float: left;
+      display: block;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      padding: 14px;
+      font-size: 20px;
+    }
+
+    .navbar_right
+    {
+      float: right;
+    }
+    #navbar a:hover 
+    {
+      overflow: hidden;
+      background-color: rgb(166, 241, 136);
+      color: rgb(9, 34, 51);
+    }
+    input
+    {
+      margin-bottom:10px;
+      height: 50px;
+      width: 80%;
+      text-align: center;
+      border-color: black;
+      font-size: 30px;
+      font-weight: 900;
+      margin-top: 1%;
+      margin-bottom: 1%;
+      box-shadow: 5px 4px 0px #000;
+    }
+    input:focus {
+          outline: none;
+        }
+    input:hover{
+      border-color: green;
+    }
+
+    .navbar_right
+    {
+      float: right;
+    }
+    #navbar a:hover 
+    {
+      overflow: hidden;
+      background-color: rgb(166, 241, 136);
+      color: rgb(9, 34, 51);
+    }
+
+  h2{
+    text-align: center;
+    font-weight: 500;
+  }
+
+  #show2
+  {
+    background-color: rgba(91, 94, 126, 0.918);
+    margin: auto;
+    width: 100%;
+  }
+  #show1
+  {
+    background-color: white;
+    text-align: center;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    color: black;
+  }
+
+    #bottom{
+      font-size: 30px;
+      font-weight: 550;
+      font-style: italic;
+      color: rgb(255, 255, 255);
+    }
+    
+    
+    #clear{
+      height: 50px;
+      width: 30%;
+      text-align: center;
+      border-color: black;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    #clear:hover 
+    {
+      background-color: #b42e2e;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar">
+    <a class="navbar_head">Disjoint Set Calculator</a>
+    <div class="navbar_right">
+    <a href="" class="navbar_right">GIT HUB</a>
+    <a href="" class="navbar_right">LINKED IN</a>
+  </div>
+  </div>
+
+
+  <form>
+    <div class="div_box">
+      <h2>Enter the Set A elements (separated by commas):<br>
+      <input autocomplete="off" type="text" id="seta"
+        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/[ .]{0,}/g, '').replace(/^,$/g,'');"
+        onkeyup="timeDelay()" placeholder="SET-A" onkeypress="loading()"></h2>
+    
+    <h2>Enter the Set B elements (separated by commas):<br>
+      <input autocomplete="off" type="text" id="setb"
+        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/[ .]{0,}/g, '').replace(/^,$/g,'');"
+        onkeyup="timeDelay()" placeholder="SET-B"
+        onkeypress="loading()"></h2>
+        <center><button id="clear" onclick="clearr()">CLEAR</button></center>
+        
+        
+      
+    </div>
+  </form>
+
+  <h1 id="show1" style="display:none"></h1>
+
+  <div id="show2" style="display:none">
+    
+    <center>
+      <h2 id="top"></h2>
+      <h2 id="between"></h2>
+      <h2 id="bottom"></h2>
+    </center>
+    </div>
+  </div>
+
+  <script>
+
+    seta.addEventListener("keyup", func)
+    seta.addEventListener("blur", func)
+    //seta.addEventListener("mouseout",func)
+    setb.addEventListener("keyup", func)
+    setb.addEventListener("blur", func);
+    //setb.addEventListener("mouseout",func)
+    function clearInput() {
+    document.getElementById("seta").innerHTML='';
+    
+}
+    function func() {
+      if (event.target.value == '') {
+        event.target.style.background = "red";
+      }
+      else {
+        event.target.style.background = "#90EE90";
+      }
+    }
+
+    function clearr() {
+      var a1 = document.getElementById("seta").value;
+      var a2 = document.getElementById("setb").value;
+      a1.value='';
+      a2.value='';
+    }
+
+    function loading(){
+      let show2 = document.getElementById("show2");
+      let show1 = document.getElementById("show1");
+      show2.style.display = "none";
+      show1.style.display = "block";
+      show1.innerHTML='LOADING....'
+    }
+
+    function timeDelay()
+    {
+      setTimeout(
+        function calculate() {
+      let show1 = document.getElementById("show1");
+      let show2 = document.getElementById("show2");
+      let top = document.getElementById("top");
+      let between = document.getElementById("between");
+      let bottom = document.getElementById("bottom");
+
+      var a1 = document.getElementById("seta").value;
+      var a2 = document.getElementById("setb").value;
+      console.log(`Before: ${show1.style.display}`);
+
+      if (a1 == "" || a2 == "") {
+        show1.style.display = "block";
+        show2.style.display = "none";
+      } else {
+        show1.style.display = "none";
+        show2.style.display = "block";
+      }
+      console.log(`After: ${show1.style.display}`);
+
+      if (a1 == "") {
+        show1.innerHTML = "Please enter the Set A";
+      }
+
+      if (a2 == "") {
+        show1.innerHTML = "Please enter the Set B";
+      }
+
+      if (a1 == "" && a2 == "") {
+        show1.innerHTML = "Please enter the Set A and Set B";
+      }
+
+      if (a1 != "" && a2 != "") {
+        var a = a1.split(",");
+        var b = a2.split(",");
+
+        show2.style.display = "block";
+        show1.style.display = "none";
+
+        if (disjoin(a, b) == "") {
+          top.innerHTML = "<b> n(A &#8745; B) = { &phi; }";
+          between.innerHTML = "<b> or Intersection of SET-A and SET-B is empty i.e, NO TWO ELEMETS ARE COMMON BETWEEN TWO SET'S ";
+          bottom.innerHTML = "This is a Disjoint set";
+        }
+        else {
+          top.innerHTML = "<b>n(A &#8745; B) = {" + disjoin(a, b) + "}";
+          between.innerHTML = "<b> or Intersection of SET-A and SET-B is <u>NOT</u> empty i.e, "+ disjoin(a, b) +" is common bwtween two SET'S";
+          bottom.innerHTML = "This is not a Disjoint set";
+        }
+      }
+    },250);
+    }
+    function disjoin(arr1, arr2) {
+      var buff = [];
+      for (var i = 0; i < arr1.length; i++) {
+        for (var k = 0; k < arr2.length; k++) {
+          if (arr1[i] == arr2[k]) {
+            buff.push(arr1[i]);
+            break;
+          }
+        }
+      }
+      return buff;
+    }
+  </script>
+</body>
+
+</html>
