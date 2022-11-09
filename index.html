@@ -158,12 +158,12 @@
     <div class="div_box">
       <h2>Enter the Set A elements (separated by commas):<br>
       <input autocomplete="off" type="text" id="seta"
-        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/^,$/g,'');"
+        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/[ ]/g,'').replace(/^,$/g,'');"
         onkeyup="timeDelay()" placeholder="SET-A" onkeydown="loading()"></h2>
     
     <h2>Enter the Set B elements (separated by commas):<br>
       <input autocomplete="off" type="text" id="setb"
-        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/^,$/g,'');"
+        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/[ ]/g,'').replace(/^,$/g,'');"
         onkeyup="timeDelay()" placeholder="SET-B"
         onkeydown="loading()"></h2>
         <center><button id="clear" onclick="clearr()">CLEAR</button></center>
