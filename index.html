@@ -10,18 +10,18 @@
     body{
       background-color: rgb(84, 116, 95);
     }
-    * {
-  box-sizing: border-box;
-} 
+   
 @media only screen and (max-width: 500px) 
 {
-  .navbar_right{
+  .navbar_right
+  {
     margin-right: 3%;
     width: 100%;
     background-color:  rgba(91, 94, 126, 0.918);
     text-decoration: none;
   }
-  .navbar_head{
+  .navbar_head
+  {
     width: 100%;
     text-decoration: none;
     padding-bottom: 2px;
@@ -98,16 +98,6 @@
       border-color: green;
     }
 
-    .navbar_right
-    {
-      float: right;
-    }
-    #navbar a:hover 
-    {
-      overflow: hidden;
-      background-color: rgb(166, 241, 136);
-      color: rgb(9, 34, 51);
-    }
 
   h2{
     text-align: center;
@@ -165,24 +155,22 @@
   </div>
 
 
-  <form>
     <div class="div_box">
       <h2>Enter the Set A elements (separated by commas):<br>
       <input autocomplete="off" type="text" id="seta"
-        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/[ .]{0,}/g, '').replace(/^,$/g,'');"
-        onkeyup="timeDelay()" placeholder="SET-A" onkeypress="loading()"></h2>
+        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/^,$/g,'');"
+        onkeyup="timeDelay()" placeholder="SET-A" onkeydown="loading()"></h2>
     
     <h2>Enter the Set B elements (separated by commas):<br>
       <input autocomplete="off" type="text" id="setb"
-        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/[ .]{0,}/g, '').replace(/^,$/g,'');"
+        oninput="this.value = this.value.replace(/[,]{2,}/g, ',').replace(/^,$/g,'');"
         onkeyup="timeDelay()" placeholder="SET-B"
-        onkeypress="loading()"></h2>
+        onkeydown="loading()"></h2>
         <center><button id="clear" onclick="clearr()">CLEAR</button></center>
         
         
       
     </div>
-  </form>
 
   <h1 id="show1" style="display:none"></h1>
 
@@ -200,14 +188,9 @@
 
     seta.addEventListener("keyup", func)
     seta.addEventListener("blur", func)
-    //seta.addEventListener("mouseout",func)
     setb.addEventListener("keyup", func)
     setb.addEventListener("blur", func);
-    //setb.addEventListener("mouseout",func)
-    function clearInput() {
-    document.getElementById("seta").innerHTML='';
     
-}
     function func() {
       if (event.target.value == '') {
         event.target.style.background = "red";
@@ -218,10 +201,15 @@
     }
 
     function clearr() {
-      var a1 = document.getElementById("seta").value;
-      var a2 = document.getElementById("setb").value;
-      a1.value='';
-      a2.value='';
+      document.getElementById("seta").value='';
+      document.getElementById("setb").value='';
+      let show2 = document.getElementById("show2");
+      let show1 = document.getElementById("show1");
+      show2.style.display = "none";
+      show1.style.display = "none";
+      document.getElementById('seta').style.backgroundColor= "white";
+      document.getElementById('setb').style.backgroundColor = "white";
+      
     }
 
     function loading(){
@@ -244,7 +232,6 @@
 
       var a1 = document.getElementById("seta").value;
       var a2 = document.getElementById("setb").value;
-      console.log(`Before: ${show1.style.display}`);
 
       if (a1 == "" || a2 == "") {
         show1.style.display = "block";
@@ -253,7 +240,6 @@
         show1.style.display = "none";
         show2.style.display = "block";
       }
-      console.log(`After: ${show1.style.display}`);
 
       if (a1 == "") {
         show1.innerHTML = "Please enter the Set A";
@@ -275,7 +261,7 @@
         show1.style.display = "none";
 
         if (disjoin(a, b) == "") {
-          top.innerHTML = "<b> n(A &#8745; B) = { &phi; }";
+          top.innerHTML = " n(A &#8745; B) = { &phi; }";
           between.innerHTML = "<b> or Intersection of SET-A and SET-B is empty i.e, NO TWO ELEMETS ARE COMMON BETWEEN TWO SET'S ";
           bottom.innerHTML = "This is a Disjoint set";
         }
@@ -285,19 +271,18 @@
           bottom.innerHTML = "This is not a Disjoint set";
         }
       }
-    },250);
+    },300);
     }
     function disjoin(arr1, arr2) {
-      var buff = [];
+      var res = [];
       for (var i = 0; i < arr1.length; i++) {
-        for (var k = 0; k < arr2.length; k++) {
-          if (arr1[i] == arr2[k]) {
-            buff.push(arr1[i]);
-            break;
+        for (var J = 0; J < arr2.length; J++) {
+          if (arr1[i] == arr2[J]) {
+            res.push(arr1[i]);
           }
         }
       }
-      return buff;
+      return res;
     }
   </script>
 </body>
